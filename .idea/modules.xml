@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Geekbrains-java3.iml" filepath="$PROJECT_DIR$/.idea/Geekbrains-java3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Geekbrains-java3-lesson1/Geekbrains-java3-lesson1.iml" filepath="$PROJECT_DIR$/Geekbrains-java3-lesson1/Geekbrains-java3-lesson1.iml" />
+    </modules>
+  </component>
+</project>
