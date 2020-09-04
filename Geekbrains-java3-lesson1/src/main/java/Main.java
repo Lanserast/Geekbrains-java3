@@ -1,5 +1,3 @@
-import javax.swing.text.Position;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 public class Main {
@@ -26,29 +24,40 @@ public class Main {
     private static void task1() throws PositionException {
         Integer[] intArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
         String[] stringArray = {"Один", "Два", "Kot", "Четыре", "Пять"};
+        //Double[] doubleArray = {};
         Double[] doubleArray = {1.0, 2.5, 3.0, 4.5, 5.5, 6.76, 7.34, 8.0, 9.54, 150.32};
         try {
             System.out.println("Исходный массив intArray " + Arrays.toString(intArray));
-            ChangePosition(intArray, 0, 10);
+            ChangePosition(intArray, 0, 14);
             System.out.println("Результат замены в массиве intArray " + Arrays.toString(intArray));
             System.out.println("Исходный массив stringArray " + Arrays.toString(stringArray));
             ChangePosition(stringArray, 1, 3);
             System.out.println("Результат замены в массиве stringArray " + Arrays.toString(stringArray));
             System.out.println("Исходный массив doubleArray " + Arrays.toString(doubleArray));
-            ChangePosition(doubleArray, 8, 9);
+            ChangePosition(doubleArray, 0, 1);
             System.out.println("Результат замены в массиве doubleArray " + Arrays.toString(doubleArray));
         } catch (PositionException e) {
             e.printStackTrace();
         }
     }
 
-    private static void ChangePosition(Object[] array, int a, int b) throws PositionException {
+
+        /*private static void ChangePosition(BoxGen<[]> array, int a, int b) throws PositionException {
         if (a < 0 || a > array.length || b < 0 || b > array.length)
             throw new PositionException("Позиции для замены указаны некорректно.");
 
         Object temp = array[a];
         array[a] = array[b];
+        array[b] =  temp;
+    }*/
+
+    public static  <T> T[] ChangePosition(T[] array, int a, int b) throws PositionException {
+        if (a < 0 || a > array.length || b < 0 || b >= array.length || (a==b) || (array == null))
+            throw new PositionException("Позиции для замены указаны некорректно.");
+        T temp = array[a];
+        array[a] = array[b];
         array[b] = temp;
+        return array;
     }
 
     private static void task2(){
@@ -58,13 +67,21 @@ public class Main {
         ChangeArrayToArrayList(intArray);
         ChangeArrayToArrayList(stringArray);
         ChangeArrayToArrayList(doubleArray);
-        System.out.println(Arrays.toString(intArray));
-        System.out.println(Arrays.toString(stringArray));
-        System.out.println(Arrays.toString(doubleArray));
+   //     System.out.println(Arrays.toString(intArray));
+      //  System.out.println(Arrays.toString(stringArray));
+   //     System.out.println(Arrays.toString(doubleArray));
     }
 
-    private static <T> ArrayList ChangeArrayToArrayList(T[] array) {
+    /*private static <T> ArrayList ChangeArrayToArrayList(T[] array) {
         return  new ArrayList<T>(Arrays.asList(array));
+    }*/
+
+    public static <T> void ChangeArrayToArrayList(T... element) {
+        ArrayList<T> tArrayList = new ArrayList<>();
+        for (T NewElement: element) {
+            tArrayList.add(NewElement);
+        }
+        System.out.println(tArrayList);
     }
 
     private static void task3(){
